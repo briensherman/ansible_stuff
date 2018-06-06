@@ -1,0 +1,19 @@
+- name: Vm Create
+  hosts: localhost
+  connection: local
+  tasks: 
+  - name: Create VM
+    azure_rm_virtualmachine:
+      resource_group: u1ansible
+      name: u1ansiblevm
+      vm_size: Standard_DS1_v2
+      admin_username: azureops
+      ssh_password_enabled: false
+      ssh_public_keys: 
+        - path: /home/azureops/.ssh/authorized_keys
+          key_data: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDfX6P9xB0srWYTFQLMNj7sdesHEtLVx5er9CMjQPrQVRzstqPqgfon9Wacft2TUxnTGxqwUytsE1EVPowm1ZR8P0ZTVUUqWTze2njXpYQ6+WJHGoQKQmnSMGfD4OoDo2IGIjFqJ+nc5NGW9OLhyTbNhT6kEbBGOsBL3upUa7cnpm0uYJFTQ53SiM16DHSuvygXO4xme8b5fLDWcZ+hj9rC8+t3SLlj9uHqw2vQ21907M91hDmuqZtHDj796YvQJt8rcrnox/rzlSRkQFmym7QO6V+TqOofeHjEPzXPtyyFnCfzjs3ekxTxh7yshNHrQOGAng9gtMoOcYwZlmOmSUk9"
+      image:
+        offer: UbuntuServer
+        publisher: Canonical
+        sku: '16.04-LTS'
+        version: latest

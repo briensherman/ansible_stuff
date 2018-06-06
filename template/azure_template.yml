@@ -1,0 +1,11 @@
+- name: Vm Create
+  hosts: localhost
+  connection: local
+  tasks:
+  -name: trying a template
+    azure_rm_deployment:
+      state: present
+      resource_group_name: "{{rg_name}}"
+      location: eastasia
+      template: "{{ lookup('file', 'template.json') }}"
+      parameters: "{{ (lookup('file', 'parameters.json') | from_json).parameters }}"
